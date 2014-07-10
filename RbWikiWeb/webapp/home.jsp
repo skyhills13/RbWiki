@@ -7,6 +7,6 @@
 <title>home</title>
 </head>
 <body>
-hello jsp
+hello RbWiki spring mvc
 </body>
 </html>
