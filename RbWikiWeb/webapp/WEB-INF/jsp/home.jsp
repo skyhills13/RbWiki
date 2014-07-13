@@ -14,7 +14,7 @@
 	<header class="jumbotron subhead" id="overview">
 	<div class="container">
 		<h1>Rbwiki</h1>
-		<p class="lead"></p>
+		<p class="lead">welcome</p>
 	</div>
 	</header>     
     
