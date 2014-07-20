@@ -5,18 +5,26 @@
   <version>1.0.0</version>
   <packaging>war</packaging>
   
+  <properties>
+  	<org.springframework.version>4.0.6.RELEASE</org.springframework.version>
+  </properties>
   
   <dependencies>
   	<dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-webmvc</artifactId>
-    	<version>4.0.6.RELEASE</version>
+    	<version>${org.springframework.version}</version>
 	</dependency>
   	<dependency>
     	<groupId>org.springframework</groupId>
     	<artifactId>spring-jdbc</artifactId>
-    	<version>4.0.6.RELEASE</version>
+    	<version>${org.springframework.version}</version>
 	</dependency>
+	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-test</artifactId>
+  		<version>${org.springframework.version}</version>
+  	</dependency>
 	<dependency>
 		<groupId>org.slf4j</groupId>
 		<artifactId>log4j-over-slf4j</artifactId>
@@ -49,11 +57,7 @@
   		<version>4.11</version>
   		<scope>test</scope> <!-- scope라는 것은 test단계에서만 필요한 library라는 뜻. 배포할때는 안들어가.   -->
   	</dependency>
-  	<dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-test</artifactId>
-  		<version>4.0.5.RELEASE</version>
-  	</dependency>
+  	
   </dependencies>
   
 	<build>
