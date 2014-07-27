@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.rbwiki.dao.users.UserDao;
+import com.rbwiki.domain.users.Authenticate;
 import com.rbwiki.domain.users.User;
 
 @Controller
@@ -54,4 +55,30 @@ public class UserController {
 		//에러가 에러가 없을 때는 다시 입력화면으로 넘어갈 것이 아니라, 메인으로 넘어가는게 좋으니까. 
 		return "redirect:/";
 	}
+	
+	@RequestMapping("/login/form")
+	public String loginForm(Model model){
+		model.addAttribute("authenticate", new Authenticate());
+		return "users/login";
+	}
+	@RequestMapping("/login")
+	public String login(@Valid Authenticate authenticate, BindingResult bindingResult){
+		if(bindingResult.hasErrors()){
+			return "users/login";
+		}
+		
+		User user = userDao.findById(authenticate.getUserId());
+		if( user == null) {
+			//TODO 에러처리 - 존재하지 않는 사용자입니다. 
+		}
+		
+		if( !user.getPassword().equals(authenticate.getPassword())) {
+			//TODO 에러처리 - 비밀번호가 틀립니다. 
+		}
+		
+		//TODO 세션에 사용자 정보 저장 
+		
+		return "users/login";
+	}
+
 }
