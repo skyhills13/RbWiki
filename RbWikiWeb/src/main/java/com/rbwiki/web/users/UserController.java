@@ -1,10 +1,16 @@
 package com.rbwiki.web.users;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -32,10 +38,20 @@ public class UserController {
 		return "users/form";
 	}
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public String create(User user){
+	public String create(@Valid User user, BindingResult bindingResult){
 		logger.debug("User : {}", user);
+		if ( bindingResult.hasErrors()) {
+			logger.debug("binding Result has error!");
+			List<ObjectError> errors = bindingResult.getAllErrors();
+			for (ObjectError error : errors) {
+				logger.debug("error : {}, {}", error.getCode(), error.getDefaultMessage());
+			}
+			//validation에서 에러가 뜨면 다시 입력화면으로 넘어갈겡 
+			return "users/form";
+		}
 		userDao.create(user);
 		logger.debug("Database: {}", userDao.findById(user.getUserId()));
-		return "users/form";
+		//에러가 에러가 없을 때는 다시 입력화면으로 넘어갈 것이 아니라, 메인으로 넘어가는게 좋으니까. 
+		return "redirect:/";
 	}
 }
