@@ -17,7 +17,14 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private UserDao userDao; 
+	private UserDao userDao;
+	//여러개가 필요할때는 이렇게 해야
+//	@Resource(name="userDao1")
+//	private UserDao userDao;
+
+//	@Resource(name="userDao2")
+//	private UserDao userDao2;
+
 	
 	@RequestMapping("/form")
 	public String form(Model model){

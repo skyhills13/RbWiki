@@ -7,9 +7,8 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 	<context:property-placeholder location="classpath*:application-properties.xml"/> 
 	
-	<context:annotation-config />
+	<context:annotation-config /> 
 	
-	<!-- 왜 나는 자동 완성이 안될까? -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		p:driverClassName="${database.driverClassName}"
 		p:url="${database.url}"
