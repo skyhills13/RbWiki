@@ -44,7 +44,7 @@ public class UserController {
 			logger.debug("binding Result has error!");
 			List<ObjectError> errors = bindingResult.getAllErrors();
 			for (ObjectError error : errors) {
-				logger.debug("error : {}, {}", error.getCode(), error.getDefaultMessage());
+				logger.debug("error : {}, {}", error.getObjectName(), error.getDefaultMessage());
 			}
 			//validation에서 에러가 뜨면 다시 입력화면으로 넘어갈겡 
 			return "users/form";

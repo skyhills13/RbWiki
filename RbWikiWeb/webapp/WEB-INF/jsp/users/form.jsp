@@ -26,27 +26,28 @@
 						<label class="control-label" for="userId">사용자 아이디</label>
 						<div class="controls">
 							<form:input path="userId" />
-							<!-- <input type="text" name="userId" value="" /> 원래는 이거였어 -->
+							<form:errors path="userId" cssClass="error" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="password">비밀번호</label>
 						<div class="controls">
-							<form:password path="password" /><!--  path가 id가 name으로 자동으로 지정 됨 --> 
+							<form:password path="password" />
+							<form:errors path="password" cssClass="error" /> 
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="name">이름</label>
 						<div class="controls">
 							<form:input path="name" />
-							<!-- <input type="text" id="name" name="name" value="" placeholder=""> -->
+							<form:errors path="name" cssClass="error" />
 						</div>
 					</div>
 					<div class="control-group">
 						<label class="control-label" for="email">이메일</label>
 						<div class="controls">
 							<form:input path="email" />
-							<!-- <input type="text" id="email" name="email" value="" placeholder=""> -->
+							<form:errors path="email" cssClass="error" />
 						</div>
 					</div>
 					<div class="control-group">
