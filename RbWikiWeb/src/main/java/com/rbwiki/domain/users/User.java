@@ -50,7 +50,21 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public boolean matchPassword(Authenticate authenticate) {
+		if ( this.password == null){
+			return false;
+		}
+		return authenticate.matchPassword(this.password);
+	}
 	
+	public boolean matchUserId(String inputUserId) {
+		if(inputUserId == null) {
+			return false;			
+		}
+		return inputUserId.equals(this.userId);
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -93,4 +107,6 @@ public class User {
 		return "User [userId=" + userId + ", password=" + password + ", name="
 				+ name + ", email=" + email + "]";
 	}
+
+
 }
