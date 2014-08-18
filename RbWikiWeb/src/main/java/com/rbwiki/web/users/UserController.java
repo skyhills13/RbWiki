@@ -39,7 +39,7 @@ public class UserController {
 	public String createForm(Model model){
 		model.addAttribute("user", new User());
 		return "users/form";
-	}
+	} 
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public String create(@Valid User user, BindingResult bindingResult){
@@ -120,11 +120,6 @@ public class UserController {
 		Object temp = session.getAttribute("userId");
 		//로그인 하지 않았을때 체크하고.
 		if(temp == null) {
-			throw new NullPointerException();
-		}
-		//존재는 하는데, session이 가지고 있는 id랑 같은지 안같은지 확인해야지.
-		String userId = (String)temp;
-		if(!user.matchUserId(userId)) {
 			throw new NullPointerException();
 		}
 		

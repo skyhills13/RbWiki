@@ -64,7 +64,14 @@ public class User {
 		}
 		return inputUserId.equals(this.userId);
 	}
-
+	
+	public User update(User updateUser) {
+		if( !matchUserId(updateUser.userId)) {
+			throw new IllegalArgumentException();
+		}
+		return new User(this.userId, updateUser.password, updateUser.name, updateUser.email);
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
