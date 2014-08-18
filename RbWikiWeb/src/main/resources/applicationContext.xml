@@ -15,9 +15,23 @@
 		p:username="${database.username}"
 		p:password="${database.password}"
 	/>
-	
-	<bean id="userDao" class="com.rbwiki.dao.users.UserDao" 
+	<!-- 
+	<bean id="userDao" class="com.rbwiki.dao.users.JdbcUserDao" 
 		p:dataSource-ref="dataSource"
 	/>
+	 -->	
+	<bean id="userDao" class="com.rbwiki.dao.users.MyBatisUserDao" 
+		p:sqlSession-ref="sqlSession"
+		p:dataSource-ref="dataSource"
+	/>
+	
+	<bean id="sqlSessionFactory" class = "org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource"
+		p:mapperLocations="classpath:com/rbwiki/dao/users/UserMapper.xml" />
+		<!-- <property name="dataSource" ref="dataSource" /> -->
+	<bean id="sqlSession" class = "org.mybatis.spring.SqlSessionTemplate" >
+ 		<!--sqlSession을 생성할 때, setter를 통하지 않고(위에 있는 애들은 전부 setter로 했었어) contructor를 통해서 sqlSessionFactory를 참조한다는 뜻이야  -->
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
 	
 </beans>
